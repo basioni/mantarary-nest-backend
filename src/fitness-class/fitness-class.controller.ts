@@ -1,8 +1,9 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
-// import { CreateClassDto, DeleteClassDto, UpdateClassDto } from './dto/createClassDto';
+import { CreateClassDto, DeleteClassDto, UpdateClassDto } from './dto/classDto';
 import { UserService } from 'src/user/user.service';
 import { FitnessClassService } from './fitness-class.service';
-// import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { JwtGuard } from 'src/auth/guards/jwt-auth.guard';
+import { UpdateUserDto } from 'src/user/dto/createUserDto';
 
 @Controller('fitness-class')
 export class FitnessClassController {
@@ -10,45 +11,46 @@ export class FitnessClassController {
     }
 
 
-    //Get All Users
-    // @UseGuards(JwtGuard)
+    //Get All Fitness Classes
+    @UseGuards(JwtGuard)
     @Get('all')
     findAll(){
         return 'all classes';
     }
 
-    // Get User
-    // @UseGuards(JwtGuard)
-    // @Get(':id')
-    // findUser(@Param("id") id:number){
-    //     return this.userService.findUser(id);
-    // }
+    // Get Fitness Class
+    @UseGuards(JwtGuard)
+    @Get(':id')
+    findClass(@Param("id") id:number){
+        return this.fitnessClassService.findClass(id);
+    }
 
-    // Add New User
-    // @UseGuards(JwtGuard)
-    // @Post()
-    // createUser(@Body() CreateUserDto: CreateUserDto){
-    //     return this.userService.createUser(CreateUserDto);
-    // }
+    // Add New Fitness Class
+    @UseGuards(JwtGuard)
+    @Post()
+    createUser(@Body() createClassDTO: CreateClassDto){
+        return this.fitnessClassService.createClass(createClassDTO);
+    }
 
-    //Get User Classes
-    // @UseGuards(JwtGuard)
-    // @Get(":id/classes")
-    // getUserClasses(@Param("id") id:string){
-    //     return this.fitnessClassServices.findUserClasses(id);
-    // }
+    //Update Fitness Class 
+    @UseGuards(JwtGuard)
+    @Put(":id")
+    update(@Param("id") id:number , @Body() updateClassDto: UpdateClassDto){
+        return this.fitnessClassService.updateClass(id, updateClassDto)
+    }
 
-    // @UseGuards(JwtGuard)
-    //Update User
-    // @Put(":id")
-    // update(@Param("id") id:number , @Body() updateUserDTO: UpdateUserDto){
-    //     return this.userService.updateUser(id, updateUserDTO)
-    // }
+    // Delete Fitness Class
+    @UseGuards(JwtGuard)
+    @Delete(':id')
+    deleteUser(@Param("id") id:number, @Body() deleteClassDTO: DeleteClassDto){
+        return this.fitnessClassService.deleteClass(id, deleteClassDTO);
+    }
 
-    // @UseGuards(JwtGuard)
-    // Delete User
-    // @Delete(':id')
-    // deleteUser(@Param("id") id:number, @Body() deleteUserDto: DeleteUserDto){
-    //     return this.userService.deleteUser(id, deleteUserDto);
-    // }
+    //Get Fitness Class User 
+    @UseGuards(JwtGuard)
+    @Get(":id/user")
+    getClassUser(@Param("id") id:string){
+        return this.userService.findUserWithUsername(id);
+    }
+
 }

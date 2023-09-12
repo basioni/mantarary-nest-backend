@@ -1,4 +1,4 @@
-import { BeforeInsert, Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BeforeInsert, Column, Entity, ManyToMany, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import * as bcrypt from 'bcryptjs';
 import { fitnessClass } from "./fitnessClass.entity";
 
@@ -17,7 +17,7 @@ export class User{
     @Column({unique: true, nullable: false })
     password:string;
 
-    @ManyToMany((type)=>fitnessClass , (fitnessClass)=>fitnessClass.user)
+    @OneToMany((type)=>fitnessClass , (fitnessClass)=>fitnessClass.user)
     fitnessclasses: fitnessClass[];
 
     @BeforeInsert()

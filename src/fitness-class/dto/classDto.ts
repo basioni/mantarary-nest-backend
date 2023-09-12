@@ -1,16 +1,16 @@
 import { PartialType } from "@nestjs/mapped-types";
-import { IsDate, IsNumber, IsString } from "class-validator";
+import { IsNumber, IsString } from "class-validator";
 
 export class CreateClassDto {
     
     @IsString()
     title: string;
 
-    @IsDate()
-    classdate: Date;
+    // @IsDate()
+    // classdate: Date;
 
-    @IsNumber()
-    attendees: number;
+    // @IsNumber()
+    // attendees: number;
     
 }
 
