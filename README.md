@@ -136,6 +136,59 @@ $ http://localhost:5000/auth/login
 }
 ````
 
+
+### Fitness Classes Endpoints:
+
+1- Get All Fitness Classes:
+* Request: Get
+* Headers must have signed JWT Token
+
+```bash
+$ http://localhost:5000/fitness-class/all
+```
+
+2- Get Fitness Class:
+* Request: Get
+* Headers must have signed JWT Token
+
+```bash
+$ http://localhost:5000/fitness-class/{classid}
+```
+
+3- Add Fitness Class
+* Request: Post
+* Headers must have signed JWT Token
+```bash
+$ http://localhost:5000/fitness-class
+```
+* User Object sample:
+
+```bash
+{
+    "title" : "Class Sample Name"
+}
+```
+
+4- Update Fitness Class
+* Request: PUT
+* Headers must have signed JWT Token
+```bash
+$ http://localhost:5000/fitness-class
+```
+* User Object sample:
+
+```bash
+{
+    "title" : "Class Sample Name"
+}
+
+5- Delete Fitness Class
+* Request: Delete
+```bash
+$ http://localhost:5000/fitness-class
+```
+
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
