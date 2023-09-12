@@ -126,6 +126,7 @@ $ http://localhost:5000/auth/register
 ```bash
 $ http://localhost:5000/auth/login
 ```
+
 * User Object sample:
 
 ```bash
@@ -181,9 +182,11 @@ $ http://localhost:5000/fitness-class
 {
     "title" : "Class Sample Name"
 }
+```
 
 5- Delete Fitness Class
 * Request: Delete
+
 ```bash
 $ http://localhost:5000/fitness-class
 ```
