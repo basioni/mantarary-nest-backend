@@ -12,6 +12,10 @@ export class UserService {
 
     }
 
+    async getAllUsers(){
+        return await this.userRep.find();
+    }
+
     async findUser(id: number){
         return await this.userRep.findOne({where: {id:id}});
     }

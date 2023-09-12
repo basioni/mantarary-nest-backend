@@ -14,7 +14,7 @@ export class UserController {
     @UseGuards(JwtGuard)
     @Get('all')
     findAll(){
-        return 'all users';
+        return this.userService.getAllUsers();
     }
 
     // Get User
@@ -31,13 +31,6 @@ export class UserController {
         return this.userService.createUser(CreateUserDto);
     }
 
-    //Get User Classes
-    @UseGuards(JwtGuard)
-    @Get(":id/classes")
-    getUserClasses(@Param("id") id:string){
-        return this.fitnessClassServices.findUserClasses(id);
-    }
-
     @UseGuards(JwtGuard)
     //Update User
     @Put(":id")
@@ -50,5 +43,12 @@ export class UserController {
     @Delete(':id')
     deleteUser(@Param("id") id:number, @Body() deleteUserDto: DeleteUserDto){
         return this.userService.deleteUser(id, deleteUserDto);
+    }
+
+    //Get User Classes
+    @UseGuards(JwtGuard)
+    @Get(":id/classes")
+    getUserClasses(@Param("id") id:string){
+        return this.fitnessClassServices.findUserClasses(id);
     }
 }

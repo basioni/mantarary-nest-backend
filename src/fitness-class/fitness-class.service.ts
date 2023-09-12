@@ -12,8 +12,13 @@ export class FitnessClassService {
 
     }
 
+    
     findUserClasses(userId: string) {
         return "this is user classes";
+    }
+
+    async getAllClasses() {
+        return await this.fitnessClassRep.find();
     }
 
     async findClass(id: number) {

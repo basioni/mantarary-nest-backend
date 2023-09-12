@@ -15,7 +15,7 @@ export class FitnessClassController {
     @UseGuards(JwtGuard)
     @Get('all')
     findAll(){
-        return 'all classes';
+        return this.fitnessClassService.getAllClasses();
     }
 
     // Get Fitness Class
